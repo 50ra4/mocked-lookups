@@ -1,0 +1,35 @@
+{
+  "name": "mocked-lookups",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "ts-node src/index.ts",
+    "check-type": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/50ra4/mocked-lookups.git"
+  },
+  "author": "50ra4",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/50ra4/mocked-lookups/issues"
+  },
+  "homepage": "https://github.com/50ra4/mocked-lookups#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.10.2",
+    "@typescript-eslint/parser": "5.10.2",
+    "eslint": "8.8.0",
+    "eslint-config-prettier": "8.3.0",
+    "husky": "7.0.4",
+    "lint-staged": "12.3.3",
+    "prettier": "2.5.1",
+    "ts-node": "10.4.0",
+    "typescript": "4.5.5"
+  },
+  "dependencies": {
+    "@holiday-jp/holiday_jp": "2.3.0",
+    "date-fns": "2.28.0"
+  }
+}
