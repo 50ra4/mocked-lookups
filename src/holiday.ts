@@ -1,9 +1,9 @@
 import * as holidayJp from "@holiday-jp/holiday_jp";
-import { startOfYear, addYears, endOfYear, format } from "date-fns";
+import { startOfYear, addYears, endOfYear, format, parseISO } from "date-fns";
 
 export const createJapaneseHoliday = (targetDate: Date) => {
-  const start = startOfYear(targetDate);
-  const end = endOfYear(addYears(start, 5));
+  const start = startOfYear(parseISO("2020-01-01"));
+  const end = endOfYear(addYears(targetDate, 3));
   return holidayJp.between(start, end).reduce((acc, cur) => {
     const key = format(cur.date, "yyyy-MM-dd");
     return {
