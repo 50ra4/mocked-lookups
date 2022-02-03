@@ -1,12 +1,17 @@
 import * as path from "path";
-import * as fs from "fs/promises";
+import * as fs from "fs";
+import * as fsPromises from "fs/promises";
 
 import { createJapaneseHoliday } from "./holiday";
 
 const main = async () => {
   try {
+    if (!fs.existsSync("dist")) {
+      await fsPromises.mkdir("dist");
+    }
+
     const holiday = createJapaneseHoliday(new Date());
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(process.cwd(), "dist", "jp-holiday.json"),
       JSON.stringify(holiday)
     );
