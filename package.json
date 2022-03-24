@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/50ra4/mocked-lookups#readme",
   "devDependencies": {
+    "@types/encoding-japanese": "1.0.18",
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
     "eslint": "8.8.0",
@@ -30,6 +31,10 @@
   },
   "dependencies": {
     "@holiday-jp/holiday_jp": "2.3.0",
-    "date-fns": "2.28.0"
+    "axios": "0.26.1",
+    "csv": "6.0.5",
+    "date-fns": "2.28.0",
+    "dotenv": "16.0.0",
+    "encoding-japanese": "1.0.30"
   }
 }
