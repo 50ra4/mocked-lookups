@@ -5,7 +5,7 @@ import { parseISO } from "date-fns";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-import { createJapaneseHoliday2 } from "./holiday";
+import { createJapaneseHoliday } from "./holiday";
 
 const main = async () => {
   try {
@@ -13,7 +13,7 @@ const main = async () => {
       await fsPromises.mkdir("dist");
     }
 
-    const holiday = await createJapaneseHoliday2(
+    const holiday = await createJapaneseHoliday(
       parseISO(process.env.HOLIDAY_START_AT ?? "2020-01-01")
     );
     await fsPromises.writeFile(

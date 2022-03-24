@@ -1,17 +1,8 @@
-import * as holidayJp from "@holiday-jp/holiday_jp";
 import axios from "axios";
 import * as csv from "csv-parse/sync";
 import * as encoding from "encoding-japanese";
 
-import {
-  startOfYear,
-  addYears,
-  endOfYear,
-  format,
-  parseISO,
-  isAfter,
-  parse,
-} from "date-fns";
+import { format, isAfter, parse } from "date-fns";
 
 const fetchHolidayCSV = () =>
   axios(process.env.HOLIDAY_CSV_URL ?? "", {
@@ -24,7 +15,7 @@ const fetchHolidayCSV = () =>
 
 const refDate = new Date();
 
-export const createJapaneseHoliday2 = async (startAt: Date) => {
+export const createJapaneseHoliday = async (startAt: Date) => {
   const rows = await fetchHolidayCSV().then(
     (data) => csv.parse(data) as [string, string][]
   );
@@ -47,19 +38,4 @@ export const createJapaneseHoliday2 = async (startAt: Date) => {
       {} as Record<string, { jp: string; en: string }>
     );
   return records;
-};
-
-export const createJapaneseHoliday = (targetDate: Date) => {
-  const start = startOfYear(parseISO("2020-01-01"));
-  const end = endOfYear(addYears(targetDate, 3));
-  return holidayJp.between(start, end).reduce((acc, cur) => {
-    const key = format(cur.date, "yyyy-MM-dd");
-    return {
-      ...acc,
-      [key]: {
-        jp: cur.name,
-        en: cur.name_en,
-      },
-    };
-  }, {} as Record<string, { jp: string; en: string }>);
 };
